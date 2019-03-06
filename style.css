@@ -32,7 +32,7 @@ span {
     padding-left: 1em;
     padding-right: 1em;
     text-align: center;
-    background-color: green;
+    background-color: #97bf0d;
 }
 
 button {
@@ -40,5 +40,5 @@ button {
     margin: 1em;
     width: 22em;
     height: 2em;
-    background-color: green;
+    background-color: #97bf0d;
 }
