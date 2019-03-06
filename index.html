@@ -1,19 +1,25 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title>My Form</title>
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
   <form>
-      <span>Регистрация</span>
-      <fieldset>
-      <input type="email" placeholder="E-mail">
-      <input type="text" placeholder="Име">
-      <input type="text" placeholder="Фамилия">
-      <input type="password" placeholder="Парола">
-      <input type="password" placeholder="Повтори парола">
-      <button type="submit">Регистрация</button>
-    </fieldset>
+    <div id="formFields">
+
+      <div class="title">Регистрация</div>
+
+      <input type="email" placeholder="E-mail" class="inputField">
+      <input type="text" placeholder="Име" class="inputField">
+      <input type="text" placeholder="Фамилия" class="inputField">
+      <input type="password" placeholder="Парола" class="inputField">
+      <input type="password" placeholder="Повтори парола" class="inputField">
+
+      <button type="submit" class="submitButton">Регистрация</button>
+    </div>
+
   </form>
 </body>
