@@ -1,6 +1,6 @@
 #formFields {
     width: 20em;
-    height: 23em;
+    height: 20em;
     border: 0.5px groove;
     border-color: black;
     background-color: #f5f5f0;
@@ -10,24 +10,29 @@
     background-color: #97bf0d;
     color: white;
     text-align: center;
+    font-size: 1.2em;
+    padding: 0.5em;
+    font-weight: bold;
   }
 
   .submitButton {
     background-color: #97bf0d;
     color: white;
     text-align: center;
-    width: 85%;
+    height: 2em;
+    width: 90%;
     position: relative;
-    left: 1.65em;
+    left: 5%;
     border: 1px groove;
+    margin-top: 1em;
 }
 
 .inputField {
-    margin: 0;
-    padding: 0;
-    width: 85%;
+    margin-top: 1em;
+    padding: 0.5em;
+    width: 90%;
     position: relative;
-    left: 1.65em;
+    left: 5%;
     border: 1px groove;
     box-sizing: border-box;
 }
