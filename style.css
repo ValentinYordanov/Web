@@ -8,9 +8,9 @@ form {
     height: 6%;
     color: white;
     text-align: center;
-    font-size: 1.2em;
-    padding: 2%;
+    padding: 1.5%;
     font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
   }
 
   #formFields {
@@ -32,6 +32,7 @@ form {
     left: 7.5%;
     border: 0;
     margin-top: 5%;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .inputField {
