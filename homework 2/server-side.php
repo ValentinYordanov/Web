@@ -36,6 +36,14 @@
 
     array_push($students, ["name" => $name, "fn" => $fn, "mark" => $mark]);
 
+    usort($students, function ($item1, $item2) {
+        if ($item2["mark"] == $item1["mark"]) {
+            return $item1["fn"] <=> $item2["fn"];
+        } else {
+            return $item2["mark"] <=> $item1["mark"];
+        }
+    });
+
     foreach ($students as &$student) {
         echo "<h3>" . $student["name"] . " " . $student["fn"] . " " . $student["mark"] . "</h3>";
     }
