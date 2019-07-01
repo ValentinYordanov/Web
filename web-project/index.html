@@ -58,9 +58,11 @@
             <button class="browse-btn">
                 Browse Files
             </button>
-        </div> 
+        </div>
         <input type="submit" value="Upload File" name="submit" />
     </form>
+
+    <img id="largeImage" src="https://i.imgur.com/iq7tfcX.jpg" onclick="swipe();"/>
 
 </body>
 
@@ -75,5 +77,17 @@
         realInput.click();
     });
 </script>
+
+<script>
+        function swipe() {
+            var largeImage = document.getElementById('largeImage');
+            largeImage.style.display = 'block';
+            largeImage.style.width = 200 + "px";
+            largeImage.style.height = 200 + "px";
+            var url = largeImage.getAttribute('src');
+            window.open(url, 'Image', 'width=largeImage.stylewidth,height=largeImage.style.height,resizable=1');
+            con
+        }
+    </script>
 
 </html>
