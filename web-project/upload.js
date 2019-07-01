@@ -1,4 +1,4 @@
-const url = 'preview.php'
+const url = 'saveImages.php'
 const form = document.querySelector('form')
 
 form.addEventListener('submit', e => {
@@ -18,5 +18,7 @@ form.addEventListener('submit', e => {
     body: formData,
   }).then(response => {
     console.log(response)
+  }).then(() => {
+    redirect: window.location.replace("index.html");
   })
 })

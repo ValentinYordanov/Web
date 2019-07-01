@@ -1,54 +1,8 @@
 <!DOCTYPE html>
 
 <head>
-    <style>
-        body {
-            font-family: sans-serif;
-        }
-
-        .input-container {
-            margin: 3em auto;
-            max-width: 300px;
-            background-color: #EDEDED;
-            border: 1px solid #DFDFDF;
-            border-radius: 5px;
-        }
-
-        input[type='file'] {
-            display: none;
-        }
-
-        .file-info {
-            font-size: 0.9em;
-        }
-
-        .browse-btn {
-            background: #03A595;
-            color: #fff;
-            min-height: 35px;
-            padding: 10px;
-            border: none;
-            border-top-left-radius: 5px;
-            border-bottom-left-radius: 5px;
-        }
-
-        .browse-btn:hover {
-            background: #4ec0b4;
-        }
-
-        @media (max-width: 300px) {
-            button {
-                width: 100%;
-                border-top-right-radius: 5px;
-                border-bottom-left-radius: 0;
-            }
-
-            .file-info {
-                display: block;
-                margin: 10px 5px;
-            }
-        }
-    </style>
+    <title>Google Photos 2</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 
 <body>
@@ -58,11 +12,11 @@
             <button class="browse-btn">
                 Browse Files
             </button>
+            <input id="submitButton" type="submit" value="Upload Photos" name="submit" />
         </div>
-        <input type="submit" value="Upload File" name="submit" />
     </form>
 
-    <img id="largeImage" src="http://localhost/images/cool_white_cat-wallpaper-1680x1050.jpg" onclick="swipe();"/>
+    <div id="images"></div>
 
 </body>
 
@@ -78,16 +32,19 @@
     });
 </script>
 
-<script>
-        function swipe() {
-            var largeImage = document.getElementById('largeImage');
-            largeImage.style.display = 'block';
-            largeImage.style.width = 200 + "px";
-            largeImage.style.height = 200 + "px";
-            var url = largeImage.getAttribute('src');
-            window.open(url, 'Image', 'width=largeImage.stylewidth,height=largeImage.style.height,resizable=1');
-            con
-        }
-    </script>
+<script src="displayImages.js"></script>
+
+<!-- used for opening images in a new window -->
+<!-- <script>
+    function swipe() {
+        var largeImage = document.getElementById('largeImage');
+        largeImage.style.display = 'block';
+        largeImage.style.width = 200 + "px";
+        largeImage.style.height = 200 + "px";
+        var url = largeImage.getAttribute('src');
+        window.open(url, 'Image', 'width=largeImage.stylewidth,height=largeImage.style.height,resizable=1');
+        con
+    }
+</script> -->
 
 </html>

@@ -1,0 +1,36 @@
+body {
+    font-family: sans-serif;
+}
+
+.input-container {
+    margin: 3em auto;
+    max-width: 100px;
+    /* border: 1px solid #DFDFDF; */
+}
+
+input[type='file'] {
+    display: none;
+}
+
+.browse-btn {
+    background: #03A595;
+    color: #fff;
+    min-height: 35px;
+    border: none;
+    width: 100%;
+}
+
+.browse-btn:hover {
+    background: #4ec0b4;
+}
+
+#submitButton {
+    margin-top: 15px;
+    border: none;
+    min-height: 35px;
+}
+
+#images {
+    width: 100%;
+    margin: auto;
+}
