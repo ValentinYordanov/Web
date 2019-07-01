@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+
+<head>
+    <style>
+        img {
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="images" style="width: 500px;"></div>
+</body>
+
+<script type="text/javascript">
+
+    var imageURLs = ["https://i.imgur.com/iq7tfcX.jpg", "https://i.imgur.com/ZsWHNBi.jpg"]
+
+    for (let i = 0; i < imageURLs.length; i++) {
+        var img = document.createElement("img");
+
+        img.src = imageURLs[i];
+        var src = document.getElementById("images");
+
+        src.appendChild(img);
+    }
+</script>
+
+</html>
