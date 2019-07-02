@@ -8,11 +8,10 @@ if (!isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] !== true) {
     exit;
 }
 
-$targetdir = dirname(__DIR__) . '\\images\\';
 $user = $_SESSION['user'];
 
-$sql = $conn->prepare("SELECT * FROM " . $images_table . " WHERE user = ? AND album = ?");
-$sql->execute([$user, $album]);
+$sql = $conn->prepare("SELECT * FROM " . $albums_table . " WHERE user = ?");
+$sql->execute([$user]);
 
 $return_value = array();
 

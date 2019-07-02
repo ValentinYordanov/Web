@@ -6,15 +6,25 @@
 </head>
 
 <body>
-    <form method="post" enctype="multipart/form-data">
-        <div class="input-container">
-            <input type="file" name="files[]" id="real-input" multiple>
-            <button class="browse-btn">
-                Browse Files
-            </button>
-            <input id="submitButton" type="submit" value="Upload Photos" name="submit" />
-        </div>
-    </form>
+    <nav>
+        <form method="post" enctype="multipart/form-data">
+            <div class="input-container">
+                <input type="file" name="files[]" id="real-input" multiple>
+                <button class="browse-btn">
+                    Browse Files
+                </button>
+                <input id="submitButton" type="submit" value="Upload Photos" name="submit" />
+            </div>
+        </form>
+
+        <form method="GET">
+            <select id="album"></select>
+            <input type="submit">
+        </form>
+        <button>Login</button>
+        <button>Logout?</button>
+    </nav>
+
 
     <div id="images"></div>
 
@@ -33,6 +43,7 @@
 </script>
 
 <script src="displayImages.js"></script>
+<script src="displayAlbums.js"></script>
 
 <!-- used for opening images in a new window -->
 <!-- <script>

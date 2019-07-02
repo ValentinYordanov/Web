@@ -1,8 +1,7 @@
 body {
     font-family: sans-serif;
 }
-
-.input-container {
+nav {
     margin: 3em auto;
     max-width: 100px;
     /* border: 1px solid #DFDFDF; */
