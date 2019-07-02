@@ -18,7 +18,5 @@ form.addEventListener('submit', e => {
     body: formData,
   }).then(response => {
     console.log(response)
-  }).then(() => {
-    redirect: window.location.replace("index.html");
   })
 })

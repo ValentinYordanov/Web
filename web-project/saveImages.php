@@ -19,4 +19,4 @@ for ($i = 0; $i < count($_FILES['files']['name']); $i++) {
   }
 }
 
-header('Location: index.html');
+// header('Location: index.html');
