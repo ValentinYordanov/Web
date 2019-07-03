@@ -2,8 +2,8 @@
 require('db.php');
 session_start();
 
-if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
-  header("location: index.html");
+if (!isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] !== true) {
+  header("location: login.html");
   exit;
 }
 
@@ -23,7 +23,6 @@ for ($i = 0; $i < count($_FILES['files']['name']); $i++) {
     echo "Everything is OK!";
   } else {
     // file upload failed
+    echo "Something is not ok!";
   }
 }
-
-// header('Location: index.html');

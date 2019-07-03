@@ -1,3 +1,13 @@
+<script>
+    fetch('isLogged.php').then(response => {
+        response.json().then(data => {
+            if (data['logged'] === false) {
+                window.location.replace("login.html");
+            }
+        })
+    })
+</script>
+
 <!DOCTYPE html>
 
 <head>
@@ -7,7 +17,7 @@
 
 <body>
     <nav>
-        <form method="post" enctype="multipart/form-data">
+        <!-- <form method="post" enctype="multipart/form-data">
             <div class="input-container">
                 <input type="file" name="files[]" id="real-input" multiple>
                 <button class="browse-btn">
@@ -15,14 +25,43 @@
                 </button>
                 <input id="submitButton" type="submit" value="Upload Photos" name="submit" />
             </div>
-        </form>
+        </form> -->
 
-        <form method="GET">
-            <select id="album"></select>
-            <input type="submit">
-        </form>
-        <button>Login</button>
-        <button>Logout?</button>
+        <select class="album" id="Show_images_album"></select>
+        <button onclick="getImages(document.getElementById('Show_images_album').value)">Show album</button>
+
+        <hr>
+        <button onclick="location.href='logout.php'">Logout</button>
+
+        <!-- ============================================================ POPUP FORM -->
+        <button class="open-button" onclick="openForm()">Open Form</button>
+
+        <div class="form-popup" id="myForm">
+            <h1>Add photos</h1>
+
+            <div id="added_photos"></div>
+            <form method="post" enctype="multipart/form-data">
+                <div class="input-container">
+                    <input type="file" name="files[]" id="real-input" multiple>
+                    <button class="browse-btn">
+                        Browse Files
+                    </button>
+                    <select class="album" id="upload_image_album"></select>
+                    <input id="submitButton" type="submit" value="Upload Photos" name="submit" />
+                </div>
+            </form>
+            <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+        </div>
+
+        <script>
+            function openForm() {
+                document.getElementById("myForm").style.display = "block";
+            }
+
+            function closeForm() {
+                document.getElementById("myForm").style.display = "none";
+            }
+        </script>
     </nav>
 
 
@@ -30,11 +69,8 @@
 
 </body>
 
-<script src="upload.js"></script>
-
 <script type="text/javascript">
     const uploadButton = document.querySelector('.browse-btn');
-    const fileInfo = document.querySelector('.file-info');
     const realInput = document.getElementById('real-input');
 
     uploadButton.addEventListener('click', () => {
@@ -42,6 +78,7 @@
     });
 </script>
 
+<script src="upload.js"></script>
 <script src="displayImages.js"></script>
 <script src="displayAlbums.js"></script>
 
@@ -56,6 +93,7 @@
         window.open(url, 'Image', 'width=largeImage.stylewidth,height=largeImage.style.height,resizable=1');
         con
     }
-</script> -->
+</script>
+-->
 
 </html>

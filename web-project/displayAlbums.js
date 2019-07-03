@@ -4,15 +4,13 @@ fetch('getAlbums.php')
     .then(data => albums = data)
     .then(() => {
         for (let i = 0; i < albums.length; i++) {
-            var album = document.getElementById("album");
-
-            album.options[album.options.length] = new Option(albums[i]['name'], albums[i]['name']);
-
-
-            // album.value = albums[i]['name'];
-            // var src = document.getElementById("album");
-
-            // src.appendChild(album);
+            var album = document.getElementsByClassName("album");
+            if (albums[i]['name']) {
+                for (var j = 0; j < album.length; j++) {
+                    album[j].options[album[j].options.length] = new Option(albums[i]['name'], albums[i]['name']);
+                }
+            }
         }
-        // console.log(JSON.stringify(albums));
+        document.getElementsByClassName('album')[0].value = albums[albums.length - 1]['album'];
+        document.getElementsByClassName('album')[1].value = albums[albums.length - 1]['album'];
     });

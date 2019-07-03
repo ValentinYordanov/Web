@@ -4,12 +4,15 @@ require('db.php');
 session_start();
 
 if (!isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] !== true) {
-    header("location: index.html");
+    header("location: login.html");
     exit;
 }
 
 $targetdir = dirname(__DIR__) . '\\images\\';
 $user = $_SESSION['user'];
+$album = $_GET['album'];
+
+$_SESSION['album'] = $album;
 
 $sql = $conn->prepare("SELECT * FROM " . $images_table . " WHERE user = ? AND album = ?");
 $sql->execute([$user, $album]);

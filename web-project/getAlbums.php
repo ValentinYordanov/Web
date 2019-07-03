@@ -1,10 +1,11 @@
 <?php
+header('Content-Type: application/json');
 require('db.php');
 
 session_start();
 
 if (!isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] !== true) {
-    header("location: index.html");
+    header("location: login.html");
     exit;
 }
 
@@ -19,7 +20,9 @@ $result = $sql->setFetchMode(PDO::FETCH_ASSOC);
 foreach ($sql->fetchAll() as $k => $v) {
     array_push($return_value, $v);
 }
-
+if ($_SESSION['album']) {
+    array_push($return_value, ['album' => $_SESSION['album']]);
+}
 echo json_encode($return_value);
 
 // for ($i = 0; $i < count($_FILES['files']['name']); $i++) {
