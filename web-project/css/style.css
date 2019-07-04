@@ -7,9 +7,9 @@ nav {
     /* border: 1px solid #DFDFDF; */
 }
 
-input[type='file'] {
+/* input[type='file'] {
     display: none;
-}
+} */
 
 .browse-btn {
     background: #03A595;
@@ -32,6 +32,11 @@ input[type='file'] {
 #images {
     width: 100%;
     margin: auto;
+}
+
+img {
+    max-width: 90%;
+    margin: 2px;
 }
 
 /* POPUP FORM */
