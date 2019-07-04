@@ -16,7 +16,7 @@ input[type='file'] {
     color: #fff;
     min-height: 35px;
     border: none;
-    width: 100%;
+    width: 20%;
 }
 
 .browse-btn:hover {
