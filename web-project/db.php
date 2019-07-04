@@ -3,7 +3,6 @@ header('Content-Type: application/json;charset:UTF-8');
 
 $db_name = 'photos-project';
 $table_name = 'images';
-$album = 'jul2019';
 
 $users_table = 'users';
 $images_table = 'images';

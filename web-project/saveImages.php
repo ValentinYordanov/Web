@@ -6,8 +6,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' || (!isset($_SESSION["loggedin"]) && $_
   exit;
 }
 
-print_r($_FILES);
-
 if (!isset($_FILES['files'])) {
   http_response_code(400);
   echo json_encode(['error' => "Please, first choose an image to upload!"]);

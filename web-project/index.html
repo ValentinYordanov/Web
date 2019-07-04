@@ -15,13 +15,19 @@
         <button onclick="getImages(document.getElementById('Show_images_album').value)">Open album</button>
 
         <button onclick="location.href='logout.php'">Logout</button>
-        
+
         <form id="file-catcher">
             <div class="input-container">
                 <input id="file-input" type='file' multiple />
                 <button type="submit" value="Submit Photos">Submit</button>
             </div>
         </form>
+
+        <select class="album" id="album-to-be-merged"></select>
+        <select class="album" id="album-to-be-merged-into"></select>
+        <button
+            onclick="merge(document.getElementById('album-to-be-merged').value, document.getElementById('album-to-be-merged-into').value);">Merge
+            albums</button>
         <hr>
 
         <!-- <form id="file-catcher">
@@ -56,6 +62,7 @@
 </body>
 <script src="upload.js"></script>
 <script src="displayImages.js"></script>
+<script src="merge.js"></script>
 
 <!-- used for opening images in a new window -->
 <!-- <script>

@@ -29,6 +29,7 @@ sendFile = function (files) {
     if (request.status === 400) {
       alert(JSON.parse(request.responseText)['error']);
     }
+    getImages(global_album);
   }
 
   for (var i = 0; i < files.length; i++) {

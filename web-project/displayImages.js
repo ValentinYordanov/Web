@@ -1,7 +1,9 @@
 // const url = 'getImages.php'
 
 var images;
+var global_album;
 function getImages(album) {
+    global_album = album;
     var myImages = document.getElementById("images");
     while (myImages.firstChild) {
         myImages.removeChild(myImages.firstChild);
