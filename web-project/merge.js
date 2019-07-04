@@ -3,7 +3,11 @@ function merge(album_to_be_merged, album_to_be_merged_into) {
     var request = new XMLHttpRequest();
 
     request.onload = function () {
-        getImages(document.getElementById('album-to-be-merged-into').value);
+        if (request.status === 400) {
+            alert(JSON.parse(request.responseText)['error']);
+        } else {
+            getImages(document.getElementById('album-to-be-merged-into').value);
+        }
     }
 
     formData.append('album_to_be_merged', album_to_be_merged);

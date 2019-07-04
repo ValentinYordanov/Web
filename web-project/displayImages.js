@@ -2,9 +2,14 @@
 
 var images;
 var global_album;
+
 function getImages(album) {
     global_album = album;
     var myImages = document.getElementById("images");
+    var currentAlbum = document.getElementById("current-album");
+    while (currentAlbum.firstChild) {
+        currentAlbum.removeChild(currentAlbum.firstChild);
+    }
     while (myImages.firstChild) {
         myImages.removeChild(myImages.firstChild);
     }
@@ -17,6 +22,12 @@ function getImages(album) {
 
     request.onload = function () {
         var images = JSON.parse(request.responseText);
+        var album = document.createElement('h1');
+        album.appendChild(document.createTextNode(global_album));
+
+        var div = document.getElementById("current-album");
+        div.appendChild(album);
+
         for (let i = 0; i < images.length; i++) {
             var img = document.createElement("img");
 
@@ -29,13 +40,17 @@ function getImages(album) {
     request.open("GET", 'getImages.php/?album=' + album);
     request.send();
 }
-    // var imageURLs = ["http://localhost/Web/images/kitten1.jpg", "http://localhost/Web/images/kitten2.jpg", "http://localhost/Web/images/kitten3.jpg"]
 
-// for (let i = 0; i < imageURLs.length; i++) {
-//     var img = document.createElement("img");
+function getCurrentAlbum() {
 
-//     img.src = imageURLs[i];
-//     var src = document.getElementById("images");
+    var xhr = new XMLHttpRequest();
+    var result;
+    xhr.onload = function () {
+        console.log(xhr.responseText);
+        return xhr.responseText;
+    }
 
-//     src.appendChild(img);
-// }
+    xhr.open('GET', 'getCurrentAlbum.php');
+    xhr.send();
+
+}
