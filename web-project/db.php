@@ -1,14 +1,20 @@
 <?php
-    header('Content-Type: application/json;charset:UTF-8');
+header('Content-Type: application/json;charset:UTF-8');
 
-    $db_name = 'photos-project';
-    $table_name = 'images';
-    $album = 'jul2019';
-    
-    $users_table = 'users';
-    $images_table = 'images';
-    $albums_table = 'albums';
+$db_name = 'photos-project';
+$table_name = 'images';
+$album = 'jul2019';
 
-    $conn = new PDO('mysql:host=localhost;dbname=photos-project;charset=utf8', 'root', null);
+$users_table = 'users';
+$images_table = 'images';
+$albums_table = 'albums';
 
-?>
+$conn = new PDO('mysql:host=localhost;dbname=photos-project;charset=utf8', 'root', null);
+
+function validateFile($file)
+{
+    if (exif_imagetype($file) != (IMAGETYPE_JPEG || IMAGETYPE_PNG || IMAGETYPE_BMP)) {
+        return false;
+    }
+    return true;
+}

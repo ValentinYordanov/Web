@@ -1,23 +1,38 @@
-const url = 'saveImages.php'
-const form = document.querySelector('form')
-// function uploadImages() {
-form.addEventListener('submit', e => {
-  e.preventDefault()
+var fileInput = document.getElementById('file-input');
+var fileList = [];
 
-  const files = document.querySelector('[type=file]').files
-  const formData = new FormData()
+fileInput.addEventListener('change', function (evnt) {
+  fileList = [];
+  for (var i = 0; i < fileInput.files.length; i++) {
+    fileList.push(fileInput.files[i]);
+  }
+})
 
-  for (let i = 0; i < files.length; i++) {
-    let file = files[i]
+var fileCatcher = document.getElementById('file-catcher');
 
-    formData.append('files[]', file)
+fileCatcher.addEventListener('submit', function (evnt) {
+  evnt.preventDefault();
+  sendFile(fileList);
+  // fileList.forEach(function (file) {
+  //   sendFile(file);
+  // })
+
+})
+//fd.append("fileToUpload[]", document.getElementById('fileToUpload').files[0]);
+
+sendFile = function (files) {
+  var formData = new FormData();
+  var request = new XMLHttpRequest();
+
+  request.onload = function () {
+    if (request.status === 400) {
+      alert(request.responseText)
+    }
   }
 
-  fetch(url, {
-    method: 'POST',
-    body: formData,
-  }).then(response => {
-    console.log(response)
-  })
-})
-// }
+  for (var i = 0; i < files.length; i++) {
+    formData.append('files[]', files[i]);
+  }
+  request.open("POST", 'saveImages.php');
+  request.send(formData);
+}

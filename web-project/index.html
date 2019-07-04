@@ -25,49 +25,17 @@
 
         <hr>
 
-        <form id="file-catcher">
+        <!-- <form id="file-catcher">
             <input id="file-input" type='file' multiple />
             <button type="submit">Submit</button>
-        </form>
-
-        <script>
-            var fileInput = document.getElementById('file-input');
-            var fileList = [];
-
-            fileInput.addEventListener('change', function (evnt) {
-                fileList = [];
-                for (var i = 0; i < fileInput.files.length; i++) {
-                    fileList.push(fileInput.files[i]);
-                }
-            })
-
-            var fileCatcher = document.getElementById('file-catcher');
-
-            fileCatcher.addEventListener('submit', function (evnt) {
-                evnt.preventDefault();
-                fileList.forEach(function (file) {
-                    sendFile(file);
-                })
-            })
-
-            sendFile = function (file) {
-                var formData = new FormData();
-                var request = new XMLHttpRequest();
-
-                formData.set('file', file);
-                request.open("POST", 'testFiles.php');
-                request.send(formData);
-            }
-        </script>
-        <!-- <form method="post" enctype="multipart/form-data">
-            <div class="input-container">
-                <input type="file" name="files[]" id="real-input" multiple>
-                <button class="browse-btn">
-                    Browse Files
-                </button>
-                <input id="submitButton" type="submit" value="Upload Photos" name="submit" />
-            </div>
         </form> -->
+
+        <form id="file-catcher">
+            <div class="input-container">
+                <input id="file-input" type='file' multiple />
+                <button type="submit" value="Submit Photos">Submit</button>
+            </div>
+        </form>
 
         <!-- ============================================================ POPUP FORM -->
         <!-- <button class="open-button" onclick="openForm()">Open Form</button>
@@ -94,24 +62,6 @@
     <div id="images"></div>
 
 </body>
-
-<script type="text/javascript">
-    const uploadButton = document.querySelector('.browse-btn');
-    const realInput = document.getElementById('real-input');
-
-    uploadButton.addEventListener('click', () => {
-        realInput.click();
-    });
-
-    // function openForm() {
-    //     document.getElementById("myForm").style.display = "block";
-    // }
-
-    // function closeForm() {
-    //     document.getElementById("myForm").style.display = "none";
-    // }
-</script>
-
 <script src="upload.js"></script>
 <script src="displayImages.js"></script>
 
