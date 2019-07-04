@@ -1,3 +1,4 @@
+<script src="displayAlbums.js"></script>
 <script>
     fetch('isLogged.php').then(response => {
         response.json().then(data => {
@@ -6,6 +7,7 @@
             }
         })
     })
+    getAlbums();
 </script>
 
 <!DOCTYPE html>
@@ -17,16 +19,6 @@
 
 <body>
     <nav>
-        <!-- <form method="post" enctype="multipart/form-data">
-            <div class="input-container">
-                <input type="file" name="files[]" id="real-input" multiple>
-                <button class="browse-btn">
-                    Browse Files
-                </button>
-                <input id="submitButton" type="submit" value="Upload Photos" name="submit" />
-            </div>
-        </form> -->
-
         <select class="album" id="Show_images_album"></select>
         <button onclick="getImages(document.getElementById('Show_images_album').value)">Show album</button>
 
@@ -40,28 +32,18 @@
             <h1>Add photos</h1>
 
             <div id="added_photos"></div>
-            <form method="post" enctype="multipart/form-data">
+            <form method="post" enctype="multipart/form-data" onsubmit="uploadImages();">
                 <div class="input-container">
                     <input type="file" name="files[]" id="real-input" multiple>
                     <button class="browse-btn">
                         Browse Files
                     </button>
-                    <select class="album" id="upload_image_album"></select>
                     <input id="submitButton" type="submit" value="Upload Photos" name="submit" />
                 </div>
             </form>
             <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
         </div>
 
-        <script>
-            function openForm() {
-                document.getElementById("myForm").style.display = "block";
-            }
-
-            function closeForm() {
-                document.getElementById("myForm").style.display = "none";
-            }
-        </script>
     </nav>
 
 
@@ -76,11 +58,18 @@
     uploadButton.addEventListener('click', () => {
         realInput.click();
     });
+
+    function openForm() {
+        document.getElementById("myForm").style.display = "block";
+    }
+
+    function closeForm() {
+        document.getElementById("myForm").style.display = "none";
+    }
 </script>
 
 <script src="upload.js"></script>
 <script src="displayImages.js"></script>
-<script src="displayAlbums.js"></script>
 
 <!-- used for opening images in a new window -->
 <!-- <script>

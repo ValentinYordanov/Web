@@ -20,9 +20,9 @@ $result = $sql->setFetchMode(PDO::FETCH_ASSOC);
 foreach ($sql->fetchAll() as $k => $v) {
     array_push($return_value, $v);
 }
-if ($_SESSION['album']) {
-    array_push($return_value, ['album' => $_SESSION['album']]);
-}
+// if ($_SESSION['album']) {
+//     array_push($return_value, ['album' => $_SESSION['album']]);
+// }
 echo json_encode($return_value);
 
 // for ($i = 0; $i < count($_FILES['files']['name']); $i++) {
