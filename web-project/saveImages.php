@@ -20,30 +20,26 @@ for ($i = 0; $i < $file_count; $i++) {
   $tmp_path = $_FILES['files']['tmp_name'][$i];
 
   if (validateFile($tmp_path) === false) {
-    array_push($errors, $file_name . " is not an image! Please try again!");
+    http_response_code(400);
+    echo $file_name . ' is not an image. Please try again!';
+    exit;
   }
 }
 
-if (count($errors) !== 0) {
-  http_response_code(400);
-  echo json_encode($errors);
-  exit;
-} else {
-  for ($i = 0; $i < $file_count; $i++) {
+for ($i = 0; $i < $file_count; $i++) {
 
-    $file_name = $_FILES['files']['name'][$i];
-    $tmp_path = $_FILES['files']['tmp_name'][$i];
+  $file_name = $_FILES['files']['name'][$i];
+  $tmp_path = $_FILES['files']['tmp_name'][$i];
 
-    $targetfile = $targetdir . $file_name;
+  $targetfile = $targetdir . $file_name;
 
-    if (
-      $sql->execute([$file_name, $user, $album]) &&
-      move_uploaded_file($tmp_path, $targetfile)
-    ) {
-      echo "file saved to data and file system";
-    } else {
-      // file upload failed
-      echo "file could not be saved to db.";
-    }
+  if (
+    $sql->execute([$file_name, $user, $album]) &&
+    move_uploaded_file($tmp_path, $targetfile)
+  ) {
+    echo "file saved to data and file system";
+  } else {
+    // file upload failed
+    echo "file could not be saved to db.";
   }
 }
