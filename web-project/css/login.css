@@ -1,0 +1,34 @@
+#login-form {
+    max-width: 30%;
+    min-height: 300px;
+    max-height: 500px;
+    border: solid black 1px;
+    margin: auto;
+}
+
+.input-text {
+    width: 70%;
+    display: block;
+    margin: 10px auto;
+    height: 30px;
+}
+
+.submit-button {
+    display: block;
+    background: #03A595;
+    color: #fff;
+    min-height: 35px;
+    border: none;
+    width: 40%;
+    margin: auto;
+}
+
+.register-button {
+    display: block;
+    background: rgb(206, 175, 3);
+    color: #fff;
+    min-height: 35px;
+    border: none;
+    width: 40%;
+    margin: 10px auto;
+}
