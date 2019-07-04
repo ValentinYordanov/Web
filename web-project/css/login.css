@@ -1,13 +1,13 @@
 #login-form {
     max-width: 30%;
-    min-height: 300px;
+    min-height: 350px;
     max-height: 500px;
     border: solid black 1px;
     margin: auto;
 }
 
 .input-text {
-    width: 70%;
+    width: 80%;
     display: block;
     margin: 10px auto;
     height: 30px;
@@ -19,8 +19,8 @@
     color: #fff;
     min-height: 35px;
     border: none;
-    width: 40%;
-    margin: auto;
+    width: 50%;
+    margin: 20px auto;
 }
 
 .register-button {
@@ -29,6 +29,10 @@
     color: #fff;
     min-height: 35px;
     border: none;
-    width: 40%;
+    width: 50%;
     margin: 10px auto;
+}
+
+#title {
+    text-align: center;
 }
