@@ -7,19 +7,25 @@ function getImages(album) {
         myImages.removeChild(myImages.firstChild);
     }
 
-    fetch('getImages.php/?album=' + album)
-        .then(response => response.json())
-        .then(data => images = data)
-        .then(() => {
-            for (let i = 0; i < images.length; i++) {
-                var img = document.createElement("img");
+    //reseting the files for upload, so if some1 press submit button after showing album, it doesn't do anything.
+    document.getElementById('file-catcher').reset();
+    fileList = null;
 
-                img.src = "http://localhost/Web/images/" + images[i]['path'];
-                var src = document.getElementById("images");
-                // console.log("some things never change");
-                src.appendChild(img);
-            }
-        });
+    var request = new XMLHttpRequest();
+
+    request.onload = function () {
+        var images = JSON.parse(request.responseText);
+        for (let i = 0; i < images.length; i++) {
+            var img = document.createElement("img");
+
+            img.src = "http://localhost/Web/images/" + images[i]['path'];
+            var src = document.getElementById("images");
+            src.appendChild(img);
+        }
+    }
+
+    request.open("GET", 'getImages.php/?album=' + album);
+    request.send();
 }
     // var imageURLs = ["http://localhost/Web/images/kitten1.jpg", "http://localhost/Web/images/kitten2.jpg", "http://localhost/Web/images/kitten3.jpg"]
 

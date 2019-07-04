@@ -6,7 +6,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' || (!isset($_SESSION["loggedin"]) && $_
   exit;
 }
 
+print_r($_FILES);
+
+if (!isset($_FILES['files'])) {
+  http_response_code(400);
+  echo json_encode(['error' => "Please, first choose an image to upload!"]);
+  exit;
+}
+
 $user = $_SESSION['user'];
+if (isset($_SESSION['album'])) {
+  $album = $_SESSION['album'];
+} else {
+  http_response_code(400);
+  echo json_encode(['error' => "Please, first open an album!"]);
+  exit;
+}
 
 $sql = $conn->prepare("INSERT INTO $images_table (path, user, album) VALUES (?, ?, ?)");
 $targetdir = dirname(__DIR__) . '\\images\\';
@@ -21,7 +36,7 @@ for ($i = 0; $i < $file_count; $i++) {
 
   if (validateFile($tmp_path) === false) {
     http_response_code(400);
-    echo $file_name . ' is not an image. Please try again!';
+    echo json_encode(['error' => $file_name . " is not an image. Please try again!"]);
     exit;
   }
 }

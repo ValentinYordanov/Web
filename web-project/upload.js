@@ -12,11 +12,12 @@ var fileCatcher = document.getElementById('file-catcher');
 
 fileCatcher.addEventListener('submit', function (evnt) {
   evnt.preventDefault();
-  sendFile(fileList);
-  // fileList.forEach(function (file) {
-  //   sendFile(file);
-  // })
-
+  if (fileList) {
+    sendFile(fileList);
+    // fileList.forEach(function (file) {
+    //   sendFile(file);
+    // })
+  }
 })
 //fd.append("fileToUpload[]", document.getElementById('fileToUpload').files[0]);
 
@@ -26,7 +27,7 @@ sendFile = function (files) {
 
   request.onload = function () {
     if (request.status === 400) {
-      alert(request.responseText)
+      alert(JSON.parse(request.responseText)['error']);
     }
   }
 

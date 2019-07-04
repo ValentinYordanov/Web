@@ -1,18 +1,10 @@
 <script src="displayAlbums.js"></script>
-<script>
-    fetch('isLogged.php').then(response => {
-        response.json().then(data => {
-            if (data['logged'] === false) {
-                window.location.replace("login.html");
-            }
-        })
-    })
-    getAlbums();
-</script>
+<script src="firstLoadJS.js"></script>
 
 <!DOCTYPE html>
 
 <head>
+    <meta charset="UTF-8">
     <title>Google Photos 2</title>
     <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
@@ -20,22 +12,22 @@
 <body>
     <nav>
         <select class="album" id="Show_images_album"></select>
-        <button onclick="getImages(document.getElementById('Show_images_album').value)">Show album</button>
+        <button onclick="getImages(document.getElementById('Show_images_album').value)">Open album</button>
+
         <button onclick="location.href='logout.php'">Logout</button>
-
-        <hr>
-
-        <!-- <form id="file-catcher">
-            <input id="file-input" type='file' multiple />
-            <button type="submit">Submit</button>
-        </form> -->
-
+        
         <form id="file-catcher">
             <div class="input-container">
                 <input id="file-input" type='file' multiple />
                 <button type="submit" value="Submit Photos">Submit</button>
             </div>
         </form>
+        <hr>
+
+        <!-- <form id="file-catcher">
+            <input id="file-input" type='file' multiple />
+            <button type="submit">Submit</button>
+        </form> -->
 
         <!-- ============================================================ POPUP FORM -->
         <!-- <button class="open-button" onclick="openForm()">Open Form</button>
