@@ -8,64 +8,86 @@
 <head>
     <meta charset="UTF-8">
     <title>Google Photos 2</title>
+    <link rel="stylesheet" type="text/css" href="NAV_STYLE.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 
 <body>
-    <nav>
-        <h2>
-            currently open album: <div id="current-album"></div>
-        </h2>
-        <select class="album" id="show_images_album"></select>
-        <button onclick="getImages(document.getElementById('show_images_album').value)">Open album</button>
+    <div class="navbar">
+        <button id="current-album" class="nav-button" onclick="openForm('open-album-form');">Current: </button>
+        <button class="nav-button" onclick="openForm('add-album-form');">Add Album</button>
+        <button class="nav-button" onclick="openForm('delete-album-form');">Delete Album</button>
+        <button class="nav-button" onclick="openForm('merge-album-form');">Merge Albums</button>
+        <button class="nav-button" onclick="openForm('add-photos-form');">Add Photos</button>
 
-        <button onclick="sessionStorage.removeItem('global_album');location.href='logout.php'">Logout</button>
+        <a href="logout.php">Logout</a>
 
-        <form id="file-catcher">
-            <div class="input-container">
-                <input id="file-input" type='file' multiple />
-                <button type="submit" value="Submit Photos">Submit</button>
-            </div>
-        </form>
+    </div>
 
-        <input id="new-album" type="text" name="album" placeholder="Album">
-        <button onclick="createAlbum(document.getElementById('new-album').value);">Add album</button>
+    <!-- <button onclick="getImages(document.getElementById('show_images_album').value)">touch</button> -->
+    
+    <div class="form-popup" id="add-album-form">
+        <div class="form-container">
+            <h1>Add album</h1>
 
-        <select class="album" id="album-to-be-removed"></select>
-        <button onclick="deleteAlbum(document.getElementById('album-to-be-removed').value);">Remove album</button>
+            <input id="new-album" type="text" name="album" placeholder="Album">
 
-        <select class="album" id="album-to-be-merged"></select>
-        <select class="album" id="album-to-be-merged-into"></select>
-        <button
-            onclick="merge(document.getElementById('album-to-be-merged').value, document.getElementById('album-to-be-merged-into').value);">Merge
-            albums</button>
-        <hr>
+            <button type="submit" class="btn" onclick="createAlbum(document.getElementById('new-album').value);">Add
+                album</button>
+            <button type="submit" class="btn cancel" onclick="closeForm('add-album-form');">Close</button>
+        </div>
+    </div>
+    <div class="form-popup" id="delete-album-form">
+        <div class="form-container">
+            <h1>Remove album</h1>
 
-        <!-- <form id="file-catcher">
-            <input id="file-input" type='file' multiple />
-            <button type="submit">Submit</button>
-        </form> -->
+            <select class="album" id="album-to-be-removed"></select>
+            <button class="btn" onclick="deleteAlbum(document.getElementById('album-to-be-removed').value);">Remove
+                album</button>
 
-        <!-- ============================================================ POPUP FORM -->
-        <!-- <button class="open-button" onclick="openForm()">Open Form</button>
+            <button type="submit" class="btn cancel" onclick="closeForm('delete-album-form');">Close</button>
+        </div>
+    </div>
 
-        <div class="form-popup" id="myForm">
-            <h1>Add photos</h1>
+    <div class="form-popup" id="merge-album-form">
+        <div class="form-container">
+            <h1>Merge albums</h1>
 
-            <div id="added_photos"></div>
-            <form method="post" enctype="multipart/form-data" onsubmit="uploadImages();">
+            <select class="album" id="album-to-be-merged"></select>
+            <select class="album" id="album-to-be-merged-into"></select>
+            <button class="btn"
+                onclick="merge(document.getElementById('album-to-be-merged').value, document.getElementById('album-to-be-merged-into').value);">Merge
+                albums</button>
+
+            <button type="submit" class="btn cancel" onclick="closeForm('merge-album-form');">Close</button>
+        </div>
+    </div>
+
+    <div class="form-popup" id="open-album-form">
+        <div class="form-container">
+            <h1>Open album</h1>
+
+            <select class="album" id="show_images_album"></select>
+            <button class="btn" onclick="getImages(document.getElementById('show_images_album').value)">Open
+                album</button>
+
+            <button type="submit" class="btn cancel" onclick="closeForm('open-album-form');">Close</button>
+        </div>
+    </div>
+
+    <div class="form-popup" id="add-photos-form">
+        <div class="form-container">
+            <h1>Add photos to the current album</h1>
+            <form id="file-catcher">
                 <div class="input-container">
-                    <input type="file" name="files[]" id="real-input" multiple>
-                    <button class="browse-btn">
-                        Browse Files
-                    </button>
-                    <input id="submitButton" type="submit" value="Upload Photos" name="submit" />
+                    <input id="file-input" type='file' multiple />
+                    <button class="btn" type="submit" value="Submit Photos">Submit</button>
                 </div>
             </form>
-            <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
-        </div> -->
+            <button type="submit" class="btn cancel" onclick="closeForm('add-photos-form');">Close</button>
+        </div>
+    </div>
 
-    </nav>
 
 
     <div id="images"></div>
@@ -73,6 +95,15 @@
 </body>
 <script src="js/upload.js"></script>
 <script src="js/merge.js"></script>
+<script>
+    function openForm(form_id) {
+        document.getElementById(form_id).style.display = "block";
+    }
+
+    function closeForm(form_id) {
+        document.getElementById(form_id).style.display = "none";
+    }
+</script>
 
 <!-- used for opening images in a new window -->
 <!-- <script>

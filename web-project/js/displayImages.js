@@ -41,11 +41,11 @@ function getImagesFromDB(album) {
         var images = JSON.parse(request.responseText);
         //problematic?
         if (global_album != null) {
-            var album = document.createElement('h1');
-            album.appendChild(document.createTextNode(global_album));
+            // var album = document.createElement('h1');
+            // album.appendChild(document.createTextNode(global_album));
 
-            var div = document.getElementById("current-album");
-            div.appendChild(album);
+            // var div = document.getElementById("current-album");
+            // div.appendChild(album);
         }
 
         for (let i = 0; i < images.length; i++) {

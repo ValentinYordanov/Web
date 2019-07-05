@@ -6,17 +6,70 @@
 
 <body>
     <div class="navbar">
-        <a href="#home">Home</a>
-        <a href="#news">News</a>
-        <div class="dropdown">
-            <button class="dropbtn">Dropdown
-                <i class="fa fa-caret-down"></i>
-            </button>
-            <div class="dropdown-content">
-                <a href="#">Link 1</a>
-                <a href="#">Link 2</a>
-                <a href="#">Link 3</a>
-            </div>
+        <button class="nav-button" onclick="openForm('open-album-form');">Current: </button>
+        <button class="nav-button" onclick="openForm('add-album-form');">Add Album</button>
+        <button class="nav-button" onclick="openForm('delete-album-form');">Delete Album</button>
+        <button class="nav-button" onclick="openForm('merge-album-form');">Merge Albums</button>
+        <a href="logout.php">Logout</a>
+
+    </div>
+
+    <!-- <button class="open-button" onclick="openForm()">Open Form</button> -->
+
+    <div class="form-popup" id="add-album-form">
+        <div class="form-container">
+            <h1>Add album</h1>
+
+            <input type="text">
+
+            <button type="submit" class="btn">Add album</button>
+            <button type="submit" class="btn cancel" onclick="closeForm('add-album-form');">Close</button>
         </div>
     </div>
+    <div class="form-popup" id="delete-album-form">
+        <div class="form-container">
+            <h1>Remove album</h1>
+
+            <select class="album" id="album-to-be-removed"></select>
+            <button onclick="deleteAlbum(document.getElementById('album-to-be-removed').value);">Remove album</button>
+
+            <button type="submit" class="btn cancel" onclick="closeForm('delete-album-form');">Close</button>
+        </div>
+    </div>
+
+    <div class="form-popup" id="merge-album-form">
+        <div class="form-container">
+            <h1>Merge albums</h1>
+
+            <select class="album" id="album-to-be-merged"></select>
+            <select class="album" id="album-to-be-merged-into"></select>
+            <button
+                onclick="merge(document.getElementById('album-to-be-merged').value, document.getElementById('album-to-be-merged-into').value);">Merge
+                albums</button>
+
+            <button type="submit" class="btn cancel" onclick="closeForm('merge-album-form');">Close</button>
+        </div>
+    </div>
+
+    <div class="form-popup" id="open-album-form">
+        <div class="form-container">
+            <h1>Open album</h1>
+
+            <select class="album" id="show_images_album"></select>
+            <button onclick="getImages(document.getElementById('show_images_album').value)">Open album</button>
+
+            <button type="submit" class="btn cancel" onclick="closeForm('open-album-form');">Close</button>
+        </div>
+    </div>
+
 </body>
+
+<script>
+    function openForm(form_id) {
+        document.getElementById(form_id).style.display = "block";
+    }
+
+    function closeForm(form_id) {
+        document.getElementById(form_id).style.display = "none";
+    }
+</script>

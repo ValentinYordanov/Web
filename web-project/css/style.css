@@ -1,33 +1,6 @@
 body {
     font-family: sans-serif;
 }
-nav {
-    margin: 3em auto;
-    max-width: 100%;
-    /* border: 1px solid #DFDFDF; */
-}
-
-/* input[type='file'] {
-    display: none;
-} */
-
-.browse-btn {
-    background: #03A595;
-    color: #fff;
-    min-height: 35px;
-    border: none;
-    width: 20%;
-}
-
-.browse-btn:hover {
-    background: #4ec0b4;
-}
-
-#submitButton {
-    margin-top: 15px;
-    border: none;
-    min-height: 35px;
-}
 
 #images {
     width: 100%;
@@ -38,25 +11,3 @@ img {
     max-width: 90%;
     margin: 2px;
 }
-
-/* POPUP FORM */
-/* Button used to open the contact form - fixed at the bottom of the page */
-.open-button {
-    background-color: #555;
-    color: white;
-    border: none;
-    cursor: pointer;
-    opacity: 0.8;
-    width: 10%;
-    margin: 10px auto;
-    min-height: 50px;
-  }
-  
-  /* The popup form - hidden by default */
-  .form-popup {
-    display: none;
-    border: 3px solid #f1f1f1;
-    z-index: 9;
-    width: 50%;
-    margin: auto;
-  }
