@@ -5,19 +5,32 @@ var global_album;
 
 function getImages(album) {
     global_album = album;
+    sessionStorage.setItem("global_album", global_album);
+
     var myImages = document.getElementById("images");
     var currentAlbum = document.getElementById("current-album");
-    while (currentAlbum.firstChild) {
-        currentAlbum.removeChild(currentAlbum.firstChild);
-    }
-    while (myImages.firstChild) {
-        myImages.removeChild(myImages.firstChild);
-    }
+
+    removeChilds(myImages);
+    removeChilds(currentAlbum);
 
     //reseting the files for upload, so if some1 press submit button after showing album, it doesn't do anything.
-    document.getElementById('file-catcher').reset();
+    if (document.getElementById('file-catcher')) {
+        document.getElementById('file-catcher').reset();
+    }
     fileList = null;
 
+    getImagesFromDB(album);
+}
+
+function removeChilds(element) {
+    if (element) {
+        while (element.firstChild) {
+            element.removeChild(element.firstChild);
+        }
+    }
+}
+
+function getImagesFromDB(album) {
     var request = new XMLHttpRequest();
 
     request.onload = function () {
@@ -39,18 +52,4 @@ function getImages(album) {
 
     request.open("GET", 'getImages.php/?album=' + album);
     request.send();
-}
-
-function getCurrentAlbum() {
-
-    var xhr = new XMLHttpRequest();
-    var result;
-    xhr.onload = function () {
-        console.log(xhr.responseText);
-        return xhr.responseText;
-    }
-
-    xhr.open('GET', 'getCurrentAlbum.php');
-    xhr.send();
-
 }

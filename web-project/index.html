@@ -1,5 +1,12 @@
 <script src="displayAlbums.js"></script>
 <script src="firstLoadJS.js"></script>
+<script src="displayImages.js"></script>
+
+<script>
+    if (sessionStorage.getItem('global_album')) {
+        getImages(sessionStorage.getItem('global_album'));
+    }
+</script>
 
 <!DOCTYPE html>
 
