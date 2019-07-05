@@ -13,7 +13,7 @@
     height: 30px;
 }
 
-#error-message {
+.error {
     width: 80%;
     margin: auto;
     color: red;

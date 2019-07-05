@@ -3,12 +3,15 @@ function createAlbum(album_name) {
     var formData = new FormData();
 
     xhr.onload = function () {
+        if (xhr.status === 400) {
+            alert("Album already exists!");
+        }
         window.location.replace("index.html");
     }
 
     formData.append('album', album_name);
 
-    xhr.open('POST', 'addAlbum.php');
+    xhr.open('POST', 'php/addAlbum.php');
     xhr.send(formData);
 }
 
@@ -25,6 +28,6 @@ function deleteAlbum(album_name) {
 
     formData.append('album', album_name);
 
-    xhr.open('POST', 'deleteAlbum.php');
+    xhr.open('POST', 'php/deleteAlbum.php');
     xhr.send(formData);
 }

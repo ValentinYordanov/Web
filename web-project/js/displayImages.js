@@ -1,11 +1,9 @@
-// const url = 'getImages.php'
-
 var images;
 var global_album;
 
-if (sessionStorage.getItem('global_album')) {
-    getImages(sessionStorage.getItem('global_album'));
-}
+// if (sessionStorage.getItem('global_album')) {
+//     getImages(sessionStorage.getItem('global_album'));
+// }
 
 function getImages(album) {
     global_album = album;
@@ -41,11 +39,11 @@ function getImagesFromDB(album) {
         var images = JSON.parse(request.responseText);
         //problematic?
         if (global_album != null) {
-            // var album = document.createElement('h1');
-            // album.appendChild(document.createTextNode(global_album));
+            var album = document.createElement('h1');
+            album.appendChild(document.createTextNode(global_album));
 
-            // var div = document.getElementById("current-album");
-            // div.appendChild(album);
+            var div = document.getElementById("current-album");
+            div.appendChild(album);
         }
 
         for (let i = 0; i < images.length; i++) {
@@ -57,6 +55,6 @@ function getImagesFromDB(album) {
         }
     }
 
-    request.open("GET", 'getImages.php/?album=' + album);
+    request.open("GET", 'php/getImages.php/?album=' + album);
     request.send();
 }

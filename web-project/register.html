@@ -3,18 +3,34 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Sign Up</title>
+    <title>Registration page</title>
     <link rel="stylesheet" type="text/css" href="css/login.css">
 </head>
 
 <body>
-    <form id="login-form" method="POST" action="register.php">
-        <h2 id="title">Register</h2>
-        <input class="input-text" type="text" name="username" placeholder="Username">
-        <input class="input-text" type="password" name="password" placeholder="Password">
-        <input class="input-text" type="password" name="confirm_password" placeholder="Confirm Password">
-        <input class="submit-button" type="submit" value="Submit">
-    </form>
+    <div id="login-form">
+        <h2 id="title">Registration</h2>
+        <div id="input-fields">
+
+            <input id="input-username" class="input-text" type="text" name="username" placeholder="Username">
+            <input id="input-password" class="input-text" type="password" name="password" placeholder="Password">
+            <input id="input-password-confirm" class="input-text" type="password" name="confirm_password"
+                placeholder="Confirm Password">
+
+            <h3 id="error-message-password-confirm" class="error" style="display: none;">Password confirm is incorrect!
+            </h3>
+
+            <h3 id="error-message-password" class="error" style="display: none;">Password should be at least 6 symbols!
+            </h3>
+            <h3 id="error-message-username" class="error" style="display: none;">Username already taken! Please, try
+                again!</h3>
+        </div>
+
+        <button class="submit-button" onclick="register();">Register</button>
+    </div>
+
 </body>
+
+<script src="js/login.js"></script>
 
 </html>

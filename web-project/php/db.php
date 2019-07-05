@@ -2,7 +2,6 @@
 header('Content-Type: application/json;charset:UTF-8');
 
 $db_name = 'photos-project';
-$table_name = 'images';
 
 $users_table = 'users';
 $images_table = 'images';

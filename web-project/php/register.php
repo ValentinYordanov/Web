@@ -11,21 +11,6 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     header("location: " . 'index.html');
 }
 
-// $sql = $conn->prepare("SELECT id FROM users WHERE name = ?");
-
-// if($sql->execute(['ivan'])){
-//     if($sql->rowCount() == 1){
-//         echo "name already taken!";
-//         $username_err = "This username is already taken.";
-//     } else{
-//         echo "it is possible!";
-//         // $username = trim($_POST["username"]);
-//     }
-// } else{
-//     echo "Oops! Something went wrong. Please try again later.";
-// }
-
-
 // Define variables and initialize with empty values
 $username = $password = $confirm_password = "";
 $username_err = $password_err = $confirm_password_err = "";
@@ -47,10 +32,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($sql->execute([$param_username])) {
             if ($sql->rowCount() == 1) {
                 $username_err = "This username is already taken.";
+                http_response_code(400);
+                echo json_encode(array('error' => 'username'));
+                exit;
             } else {
                 $username = trim($_POST["username"]);
             }
         } else {
+            http_response_code(400);
             echo "Oops! Something went wrong. Please try again later.";
         }
 
@@ -64,6 +53,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $password_err = "Please enter a password.";
     } elseif (strlen(trim($_POST["password"])) < 6) {
         $password_err = "Password must have atleast 6 characters.";
+        http_response_code(400);
+        echo json_encode(array('error' => 'password'));
+        exit;
     } else {
         $password = trim($_POST["password"]);
     }
@@ -74,6 +66,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $confirm_password = trim($_POST["confirm_password"]);
         if (empty($password_err) && ($password != $confirm_password)) {
             $confirm_password_err = "Password did not match.";
+            http_response_code(400);
+            echo json_encode(array('error' => 'password-confirm'));
+            exit;
         }
     }
 
@@ -85,20 +80,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // Set parameters
         $param_username = $username;
-        $param_password = password_hash($password, PASSWORD_DEFAULT); // Creates a password hash
+        $param_password = password_hash($password, PASSWORD_DEFAULT);
 
-        // Attempt to execute the prepared statement
-        if ($sql->execute([$param_username, $param_password])) {
-            // Redirect to login page
-            header("location: index.html");
-        } else {
-            echo "Something went wrong. Please try again later.";
-        }
-
+        $sql->execute([$param_username, $param_password]);
 
         // Close statement
         unset($sql);
     } else {
-        echo "Username already taken";
+        http_response_code(400);
     }
 }

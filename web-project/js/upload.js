@@ -35,6 +35,6 @@ sendFile = function (files) {
   for (var i = 0; i < files.length; i++) {
     formData.append('files[]', files[i]);
   }
-  request.open("POST", 'saveImages.php');
+  request.open("POST", 'php/saveImages.php');
   request.send(formData);
 }

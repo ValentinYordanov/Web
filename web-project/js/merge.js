@@ -14,6 +14,6 @@ function merge(album_to_be_merged, album_to_be_merged_into) {
     formData.append('album_to_be_merged', album_to_be_merged);
     formData.append('album_to_be_merged_into', album_to_be_merged_into);
 
-    request.open("POST", 'merge.php');
+    request.open("POST", 'php/merge.php');
     request.send(formData);
 }

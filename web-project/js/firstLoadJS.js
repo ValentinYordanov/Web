@@ -5,6 +5,6 @@ request.onload = function () {
         window.location.replace("login.html");
     }
 }
-request.open("GET", 'isLogged.php');
+request.open("GET", 'php/isLogged.php');
 request.send();
 getAlbums();

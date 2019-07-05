@@ -11,9 +11,9 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
     session_destroy();
 
     // Redirect to login page
-    header("location: login.html");
+    header("location: ../login.html");
     exit;
 } else {
-    header("location: index.html");
+    header("location: ../index.html");
     exit;
 }

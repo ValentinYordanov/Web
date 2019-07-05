@@ -14,6 +14,6 @@ function getAlbums() {
         }
     }
 
-    request.open("GET", 'getAlbums.php');
+    request.open("GET", 'php/getAlbums.php');
     request.send();
 }

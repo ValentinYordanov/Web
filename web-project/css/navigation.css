@@ -128,10 +128,10 @@
   opacity: 1;
 }
 
-/* #current-album {
-    background-color: green;
+#add-photos {
+  background-color: #03A595;
 }
 
-#current-album:hover {
-    background-color: rgb(68, 184, 97);
-} */
+#add-photos:hover {
+  background-color: rgb(0, 126, 111);
+}
