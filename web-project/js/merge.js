@@ -6,7 +6,8 @@ function merge(album_to_be_merged, album_to_be_merged_into) {
         if (request.status === 400) {
             alert(JSON.parse(request.responseText)['error']);
         } else {
-            getImages(document.getElementById('album-to-be-merged-into').value);
+            sessionStorage.setItem("global_album", album_to_be_merged_into);
+            window.location.replace("index.html");
         }
     }
 
