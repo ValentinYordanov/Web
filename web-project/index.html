@@ -14,7 +14,7 @@
 
 <body>
     <div class="navbar">
-        <button class="nav-button" onclick="openForm('open-album-form');">Current: </button>
+        <button class="nav-button" onclick="openForm('open-album-form');">Open Album</button>
         <button class="nav-button" onclick="openForm('add-album-form');">Create Album</button>
         <button class="nav-button" onclick="openForm('delete-album-form');">Delete Album</button>
         <button class="nav-button" onclick="openForm('merge-album-form');">Merge Albums</button>
@@ -108,6 +108,10 @@
         document.getElementById('add-album-form').style.display = 'none';
 
         document.getElementById(form_id).style.display = "block";
+    }
+
+    function closeForm(form_id) {
+        document.getElementById(form_id).style.display = "none";
     }
 </script>
 

@@ -1,9 +1,11 @@
 var images;
 var global_album;
 
-// if (sessionStorage.getItem('global_album')) {
-//     getImages(sessionStorage.getItem('global_album'));
-// }
+if (sessionStorage.getItem('global_album')) {
+    getImages(sessionStorage.getItem('global_album'));
+}
+
+var server_path = "http://localhost/Web/images/";
 
 function getImages(album) {
     global_album = album;
@@ -49,7 +51,7 @@ function getImagesFromDB(album) {
         for (let i = 0; i < images.length; i++) {
             var img = document.createElement("img");
 
-            img.src = "http://localhost/Web/images/" + images[i]['path'];
+            img.src = server_path + images[i]['path'];
             var src = document.getElementById("images");
             src.appendChild(img);
         }

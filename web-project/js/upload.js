@@ -11,12 +11,16 @@ fileInput.addEventListener('change', function (evnt) {
 var fileCatcher = document.getElementById('file-catcher');
 
 fileCatcher.addEventListener('submit', function (evnt) {
-  evnt.preventDefault();
-  if (fileList) {
-    sendFile(fileList);
-    // fileList.forEach(function (file) {
-    //   sendFile(file);
-    // })
+  if (!sessionStorage.getItem('global_album')) {
+    alert("Open an album first, please!");
+  } else {
+    evnt.preventDefault();
+    if (fileList) {
+      sendFile(fileList);
+      // fileList.forEach(function (file) {
+      //   sendFile(file);
+      // })
+    }
   }
 })
 //fd.append("fileToUpload[]", document.getElementById('fileToUpload').files[0]);

@@ -1,4 +1,5 @@
 function login() {
+    sessionStorage.removeItem('global_album');
     var xhr = new XMLHttpRequest();
     var fd = new FormData();
 

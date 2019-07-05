@@ -5,7 +5,10 @@ function createAlbum(album_name) {
     xhr.onload = function () {
         if (xhr.status === 400) {
             alert("Album already exists!");
+        } else {
+            sessionStorage.setItem('global_album', album_name);
         }
+
         window.location.replace("index.html");
     }
 
