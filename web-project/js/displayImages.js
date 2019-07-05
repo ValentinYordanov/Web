@@ -3,6 +3,10 @@
 var images;
 var global_album;
 
+if (sessionStorage.getItem('global_album')) {
+    getImages(sessionStorage.getItem('global_album'));
+}
+
 function getImages(album) {
     global_album = album;
     sessionStorage.setItem("global_album", global_album);
