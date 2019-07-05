@@ -1,7 +1,7 @@
 #login-form {
     max-width: 30%;
-    min-height: 350px;
-    max-height: 500px;
+    min-height: 380px;
+    max-height: 520px;
     border: solid black 1px;
     margin: auto;
 }
@@ -11,6 +11,12 @@
     display: block;
     margin: 10px auto;
     height: 30px;
+}
+
+#error-message {
+    width: 80%;
+    margin: auto;
+    color: red;
 }
 
 .submit-button {

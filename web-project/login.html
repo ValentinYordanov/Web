@@ -8,19 +8,26 @@
 </head>
 
 <body>
-    <form id="login-form" method="POST" action="login.php">
+    <div id="login-form">
         <h2 id="title">Login</h2>
         <div id="input-fields">
 
             <input class="input-text" id="input-username" type="text" name="username" placeholder="Username">
+            <div id="username-error"></div>
             <input class="input-text" id="input-password" type="password" name="password" placeholder="Password">
+            <p id="password-error"></p>
+
+            <h3 id="error-message" style="display: none;">Wrong credentials! Please, try again!</h3>
         </div>
-        <input class="submit-button" type="submit" value="Submit">
+
+        <button class="submit-button" onclick="login();">Login</button>
         <input class="register-button" type="button" onclick="document.location.href = 'register.html'"
             value="Register" />
 
-    </form>
+    </div>
 
 </body>
+
+<script src="js/login.js"></script>
 
 </html>

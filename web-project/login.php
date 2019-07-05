@@ -1,6 +1,5 @@
 <?php
-require_once "db.php";
-// Initialize the session
+require("db.php");
 session_start();
 
 // Check if the user is already logged in, if yes then redirect him to welcome page
@@ -9,14 +8,10 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
     exit;
 }
 
-// Include config file
-
-// Define variables and initialize with empty values
 $username = $password = "";
 $username_err = $password_err = "";
 
-// Processing form data when form is submitted
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['username']) && isset($_POST['password'])) {
 
     // Check if username is empty
     if (empty(trim($_POST["username"]))) {
@@ -57,25 +52,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         $_SESSION["id"] = $id;
                         $_SESSION["user"] = $username;
 
-                        // Redirect user to welcome page
-                        header("location: index.html");
+                        http_response_code(200);
+                        exit;
                     } else {
                         // Display an error message if password is not valid
-                        $password_err = "The password you entered was not valid.";
-                        echo "The password you entered was not valid.";
+                        http_response_code(400);
+                        exit;
                     }
                 }
             } else {
                 // Display an error message if username doesn't exist
-                $username_err = "No account found with that username.";
-                echo "No account found with that username.";
+                http_response_code(400);
+                exit;
             }
         } else {
-            echo "Oops! Something went wrong. Please try again later.";
+            http_response_code(400);
+            exit;
         }
-
-
-        // Close statement
-        unset($stmt);
     }
 }
