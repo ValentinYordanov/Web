@@ -31,6 +31,9 @@
         <input id="new-album" type="text" name="album" placeholder="Album">
         <button onclick="createAlbum(document.getElementById('new-album').value);">Add album</button>
 
+        <select class="album" id="album-to-be-removed"></select>
+        <button onclick="deleteAlbum(document.getElementById('album-to-be-removed').value);">Remove album</button>
+
         <select class="album" id="album-to-be-merged"></select>
         <select class="album" id="album-to-be-merged-into"></select>
         <button

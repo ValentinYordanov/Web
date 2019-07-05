@@ -21,7 +21,13 @@ if (isset($_SESSION['album'])) {
   exit;
 }
 
-$sql = $conn->prepare("INSERT INTO $images_table (path, user, album) VALUES (?, ?, ?)");
+$result = $conn->query("SELECT id FROM albums WHERE user = '$user' AND name = '$album'");
+$album_id = $result->fetch();
+$album_id = $album_id['id'];
+
+
+
+$sql = $conn->prepare("INSERT INTO $images_table (path, user, album, album_id) VALUES (?, ?, ?, ?)");
 $targetdir = dirname(__DIR__) . '\\images\\';
 
 $file_count = count($_FILES['files']['name']);
@@ -47,7 +53,7 @@ for ($i = 0; $i < $file_count; $i++) {
   $targetfile = $targetdir . $file_name;
 
   if (
-    $sql->execute([$file_name, $user, $album]) &&
+    $sql->execute([$file_name, $user, $album, $album_id]) &&
     move_uploaded_file($tmp_path, $targetfile)
   ) {
     echo "file saved to data and file system";
