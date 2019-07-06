@@ -5,7 +5,7 @@ $ini_array = parse_ini_file("../config.ini");
 $user = $ini_array['user'];
 $password = $ini_array['password'];
 
-$conn = new PDO('mysql:host=localhost;charset=utf8', 'root', null);
+$conn = new PDO('mysql:host=localhost;charset=utf8', $user, $password);
 
 $db_name = $ini_array['db_name'];
 
