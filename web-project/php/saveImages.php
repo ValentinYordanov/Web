@@ -25,10 +25,11 @@ $result = $conn->query("SELECT id FROM albums WHERE user = '$user' AND name = '$
 $album_id = $result->fetch();
 $album_id = $album_id['id'];
 
+$images_forlder = $ini_array['images_folder'];
 
 
 $sql = $conn->prepare("INSERT INTO $images_table (path, user, album, album_id) VALUES (?, ?, ?, ?)");
-$targetdir = dirname(__DIR__) . '\\images\\';
+$targetdir = dirname(__DIR__) . $images_forlder;
 
 $file_count = count($_FILES['files']['name']);
 $errors = array();

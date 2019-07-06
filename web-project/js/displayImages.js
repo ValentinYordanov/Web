@@ -5,7 +5,7 @@ if (sessionStorage.getItem('global_album')) {
     getImages(sessionStorage.getItem('global_album'));
 }
 
-var server_path = "http://localhost/Web/images/";
+var server_path = "./images/";
 
 function getImages(album) {
     global_album = album;

@@ -1,22 +1,17 @@
 <?php
 header('Content-Type: application/json;charset:UTF-8');
-$ini_array = parse_ini_file("../config.ini");
-
-$user = $ini_array['user'];
-$password = $ini_array['password'];
 
 $conn = new PDO('mysql:host=localhost;charset=utf8', 'root', null);
+$db = 'photos-project';
 
-$db_name = $ini_array['db_name'];
+$users_table = 'users';
+$albums_table = 'albums';
+$images_table = 'images';
 
-$users_table = $ini_array['users_table'];
-$images_table = $ini_array['images_table'];
-$albums_table = $ini_array['albums_table'];
-
-$sql = "CREATE DATABASE $db_name";
+$sql = "CREATE DATABASE $db";
 $conn->query($sql);
 
-$new_conn = new PDO('mysql:host=localhost;dbname=' . $db_name . ';charset=utf8', $user, $password);
+$new_conn = new PDO('mysql:host=localhost;dbname=' . $db . ';charset=utf8', 'root', null);
 
 $create_users = "CREATE TABLE $users_table(
         id INT NOT NULL AUTO_INCREMENT,
